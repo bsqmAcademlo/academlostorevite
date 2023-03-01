@@ -4,7 +4,7 @@ import { printProductsCart } from "./printProductsCart.js";
 import { printTotal } from "./printTotal.js";
 
 export const buyProducts = (cart, products) => {
-    const btnBuy = document.querySelector(".btn__buy");
+    let btnBuy = document.querySelector(".btn__buy");
 
     if (btnBuy)
         btnBuy.addEventListener("click", () => {

@@ -1,5 +1,6 @@
 import { numberToCurrency } from "../helpers/numberToCurrency.js";
 import { amountProductsInCart } from "../helpers/amountProductsInCart.js";
+import { buyProducts } from "./buyProducts.js";
 
 export const printTotal = (cart) => {
     const contentCartProducts = document.querySelector(
@@ -17,6 +18,11 @@ export const printTotal = (cart) => {
 
                 <button class="btn__buy">Comprar</button>`;
         contentCartTotal.innerHTML = html;
+
+        buyProducts(
+            cart,
+            JSON.parse(window.localStorage.getItem("productsApi"))
+        );
     } else {
         html += `<div class="contentCart__img-empty">
                     <img src="/images/empty-cart.png" alt="empty cart">
