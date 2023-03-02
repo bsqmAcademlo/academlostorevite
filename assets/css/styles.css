@@ -692,6 +692,27 @@ footer {
     font-size: 1.5rem;
 }
 
+footer > p {
+    margin-top: 3rem;
+    background-color: var(--first-color);
+    color: var(--container-color);
+    text-align: center;
+    padding: 1rem;
+}
+
+footer > p {
+    margin-top: 3rem;
+    background-color: var(--first-color);
+    color: var(--container-color);
+    text-align: center;
+    padding: 1rem;
+}
+
+footer > p > b > a {
+    font-weight: 700;
+    color: var(--button-color);
+}
+
 /*=============== LOADER ===============*/
 .load {
     position: fixed;

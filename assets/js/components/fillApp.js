@@ -168,6 +168,8 @@ export const fillApp = () => {
                     </ul>
                 </div>
             </section>
+
+            <p><b>Nombre completo, correo y <a href="#">repositorio</a> de la persona que lo realizo</b></p>
         </footer>
     `;
 
