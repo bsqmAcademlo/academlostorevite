@@ -1,10 +1,10 @@
 import { numberToCurrency } from "../helpers/numberToCurrency.js";
 
-export const printProducts = (products) => {
+export const printProducts = (db) => {
     const productsHTML = document.querySelector(".products");
     let html = "";
 
-    for (const { category, id, image, name, price, quantity } of products) {
+    for (const { category, id, image, name, price, quantity } of db.products) {
         const alt = "imagen camisa " + name.split(" ").slice(-1) + id;
 
         const showQuantity =

@@ -2,7 +2,7 @@ import { printAmountProductsInCart } from "./printAmountProductsInCart.js";
 import { printProductsCart } from "./printProductsCart.js";
 import { printTotal } from "./printTotal.js";
 
-export const handleCart = (products, db) => {
+export const handleCart = (db) => {
     const productsHTML = document.querySelector(".products");
     const contentCartProducts = document.querySelector(
         ".contentCart__products"
@@ -11,7 +11,9 @@ export const handleCart = (products, db) => {
     productsHTML.addEventListener("click", (e) => {
         if (e.target.classList.contains("bx-plus")) {
             const id = Number(e.target.id);
-            const productFind = products.find((product) => product.id === id);
+            const productFind = db.products.find(
+                (product) => product.id === id
+            );
 
             if (db.cart[productFind.id]) {
                 if (db.cart[productFind.id].amount === productFind.quantity)
@@ -34,7 +36,9 @@ export const handleCart = (products, db) => {
     contentCartProducts.addEventListener("click", (e) => {
         if (e.target.classList.contains("bx-plus")) {
             const id = Number(e.target.parentElement.id);
-            const productFind = products.find((product) => product.id === id);
+            const productFind = db.products.find(
+                (product) => product.id === id
+            );
 
             if (db.cart[productFind.id].amount === productFind.quantity)
                 return alert("No tenemos mas en stock");

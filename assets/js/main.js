@@ -22,25 +22,24 @@ window.addEventListener("load", function () {
 });
 
 (async () => {
-    const products =
-        JSON.parse(localStorage.getItem("productsApi")) ||
-        (await getProducts());
-
     const db = {
         cart: JSON.parse(localStorage.getItem("cartProducts")) || {},
+        products:
+            JSON.parse(localStorage.getItem("productsApi")) ||
+            (await getProducts()),
     };
 
     fillApp();
     handleFilterActive();
-    printProducts(products);
+    printProducts(db);
     headerScroll();
     handleNavbar();
     darkMode();
     handleShowCart();
-    handleCart(products, db);
+    handleCart(db);
     printProductsCart(db);
     printTotal(db);
-    buyProducts(db, products);
+    buyProducts(db);
     modalProduct(db);
     printAmountProductsInCart(db);
     scrollSpy();

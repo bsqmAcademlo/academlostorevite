@@ -3,7 +3,7 @@ import { printProducts } from "./printProducts.js";
 import { printProductsCart } from "./printProductsCart.js";
 import { printTotal } from "./printTotal.js";
 
-export const buyProducts = (db, products) => {
+export const buyProducts = (db) => {
     let btnBuy = document.querySelector(".btn__buy");
 
     if (btnBuy)
@@ -14,7 +14,7 @@ export const buyProducts = (db, products) => {
             const res = confirm("seguro que quieres hacer la compra? 😍");
             if (!res) return;
 
-            products = products.map((product) => {
+            db.products = db.products.map((product) => {
                 return db.cart[product.id]?.id === product.id
                     ? {
                           ...product,
@@ -28,14 +28,14 @@ export const buyProducts = (db, products) => {
 
             window.localStorage.setItem(
                 "productsApi",
-                JSON.stringify(products)
+                JSON.stringify(db.products)
             );
             window.localStorage.setItem(
                 "cartProducts",
                 JSON.stringify(db.cart)
             );
 
-            printProducts(products);
+            printProducts(db);
             printProductsCart(db);
             printTotal(db);
             printAmountProductsInCart(db);
