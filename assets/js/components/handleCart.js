@@ -2,7 +2,7 @@ import { printAmountProductsInCart } from "./printAmountProductsInCart.js";
 import { printProductsCart } from "./printProductsCart.js";
 import { printTotal } from "./printTotal.js";
 
-export const handleCart = (products, cart) => {
+export const handleCart = (products, db) => {
     const productsHTML = document.querySelector(".products");
     const contentCartProducts = document.querySelector(
         ".contentCart__products"
@@ -13,18 +13,21 @@ export const handleCart = (products, cart) => {
             const id = Number(e.target.id);
             const productFind = products.find((product) => product.id === id);
 
-            if (cart[productFind.id]) {
-                if (cart[productFind.id].amount === productFind.quantity)
+            if (db.cart[productFind.id]) {
+                if (db.cart[productFind.id].amount === productFind.quantity)
                     return alert("No tenemos mas en stock");
-                cart[productFind.id].amount++;
+                db.cart[productFind.id].amount++;
             } else {
-                cart[productFind.id] = { ...productFind, amount: 1 };
+                db.cart[productFind.id] = { ...productFind, amount: 1 };
             }
 
-            window.localStorage.setItem("cartProducts", JSON.stringify(cart));
-            printProductsCart(cart);
-            printTotal(cart);
-            printAmountProductsInCart(cart);
+            window.localStorage.setItem(
+                "cartProducts",
+                JSON.stringify(db.cart)
+            );
+            printProductsCart(db);
+            printTotal(db);
+            printAmountProductsInCart(db);
         }
     });
 
@@ -33,32 +36,38 @@ export const handleCart = (products, cart) => {
             const id = Number(e.target.parentElement.id);
             const productFind = products.find((product) => product.id === id);
 
-            if (cart[productFind.id].amount === productFind.quantity)
+            if (db.cart[productFind.id].amount === productFind.quantity)
                 return alert("No tenemos mas en stock");
 
-            cart[id].amount++;
+            db.cart[id].amount++;
 
-            window.localStorage.setItem("cartProducts", JSON.stringify(cart));
-            printProductsCart(cart);
-            printTotal(cart);
-            printAmountProductsInCart(cart);
+            window.localStorage.setItem(
+                "cartProducts",
+                JSON.stringify(db.cart)
+            );
+            printProductsCart(db);
+            printTotal(db);
+            printAmountProductsInCart(db);
         }
 
         if (e.target.classList.contains("bx-minus")) {
             const id = Number(e.target.parentElement.id);
 
-            if (cart[id].amount === 1) {
+            if (db.cart[id].amount === 1) {
                 const res = confirm("Seguro lo quieres eliminar 😫");
                 if (!res) return;
-                delete cart[id];
+                delete db.cart[id];
             } else {
-                cart[id].amount--;
+                db.cart[id].amount--;
             }
 
-            window.localStorage.setItem("cartProducts", JSON.stringify(cart));
-            printProductsCart(cart);
-            printTotal(cart);
-            printAmountProductsInCart(cart);
+            window.localStorage.setItem(
+                "cartProducts",
+                JSON.stringify(db.cart)
+            );
+            printProductsCart(db);
+            printTotal(db);
+            printAmountProductsInCart(db);
         }
 
         if (e.target.classList.contains("bx-trash-alt")) {
@@ -66,12 +75,15 @@ export const handleCart = (products, cart) => {
             if (!res) return;
 
             const id = Number(e.target.parentElement.id);
-            delete cart[id];
+            delete db.cart[id];
 
-            window.localStorage.setItem("cartProducts", JSON.stringify(cart));
-            printProductsCart(cart);
-            printTotal(cart);
-            printAmountProductsInCart(cart);
+            window.localStorage.setItem(
+                "cartProducts",
+                JSON.stringify(db.cart)
+            );
+            printProductsCart(db);
+            printTotal(db);
+            printAmountProductsInCart(db);
         }
     });
 };

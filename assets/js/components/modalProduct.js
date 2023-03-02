@@ -3,7 +3,7 @@ import { printAmountProductsInCart } from "./printAmountProductsInCart.js";
 import { printProductsCart } from "./printProductsCart.js";
 import { printTotal } from "./printTotal.js";
 
-export const modalProduct = (cart) => {
+export const modalProduct = (db) => {
     const modalProduct = document.querySelector(".modalProduct");
     const productHTTML = document.querySelector(".products");
 
@@ -53,24 +53,25 @@ export const modalProduct = (cart) => {
 
             if (iconAdd)
                 iconAdd.addEventListener("click", () => {
-                    if (cart[productFind.id]) {
+                    if (db.cart[productFind.id]) {
                         if (
-                            cart[productFind.id].amount === productFind.quantity
+                            db.cart[productFind.id].amount ===
+                            productFind.quantity
                         )
                             return alert("No tenemos mas en stock");
-                        cart[productFind.id].amount++;
+                        db.cart[productFind.id].amount++;
                     } else {
-                        cart[productFind.id] = { ...productFind, amount: 1 };
+                        db.cart[productFind.id] = { ...productFind, amount: 1 };
                     }
 
                     window.localStorage.setItem(
                         "cartProducts",
-                        JSON.stringify(cart)
+                        JSON.stringify(db.cart)
                     );
 
-                    printProductsCart(cart);
-                    printAmountProductsInCart(cart);
-                    printTotal(cart);
+                    printProductsCart(db);
+                    printAmountProductsInCart(db);
+                    printTotal(db);
                 });
         }
     });

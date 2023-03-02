@@ -1,14 +1,14 @@
 import { numberToCurrency } from "../helpers/numberToCurrency.js";
 
-export const printProductsCart = (products) => {
+export const printProductsCart = (db) => {
     const contentCartProducts = document.querySelector(
         ".contentCart__products"
     );
 
     let html = "";
 
-    for (const product in products) {
-        const { amount, name, image, price, quantity, id } = products[product];
+    for (const product in db.cart) {
+        const { amount, name, image, price, quantity, id } = db.cart[product];
         const subtotal = amount * price;
 
         html += `

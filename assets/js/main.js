@@ -26,7 +26,9 @@ window.addEventListener("load", function () {
         JSON.parse(localStorage.getItem("productsApi")) ||
         (await getProducts());
 
-    let cart = JSON.parse(localStorage.getItem("cartProducts")) || {};
+    const db = {
+        cart: JSON.parse(localStorage.getItem("cartProducts")) || {},
+    };
 
     fillApp();
     handleFilterActive();
@@ -35,12 +37,12 @@ window.addEventListener("load", function () {
     handleNavbar();
     darkMode();
     handleShowCart();
-    handleCart(products, cart);
-    printProductsCart(cart);
-    printTotal(cart);
-    buyProducts(cart, products);
-    modalProduct(cart);
-    printAmountProductsInCart(cart);
+    handleCart(products, db);
+    printProductsCart(db);
+    printTotal(db);
+    buyProducts(db, products);
+    modalProduct(db);
+    printAmountProductsInCart(db);
     scrollSpy();
 
     mixitup(".products", {

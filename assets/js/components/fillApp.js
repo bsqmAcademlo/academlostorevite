@@ -90,7 +90,14 @@ export const fillApp = () => {
         <div class="contentCart">
             <i class="bx bx-x" id="iconCloseCart"></i>
             <div class="contentCart__products"></div>
-            <div class="contentCart__total"></div>
+            <div class="contentCart__total">
+                <div class="contentCart__total--buy">
+                    <p class="numberItems">1 items</p>
+                    <p class="totalPrice">$20.00</p>
+                </div>
+
+                <button class="btn__buy">Comprar</button>
+            </div>
         </div>
 
         <div class="modalProduct"></div>
