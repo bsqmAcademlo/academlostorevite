@@ -17,11 +17,7 @@ import { load } from "./components/load.js";
 import { fillApp } from "./components/fillApp.js";
 import { handleFilterActive } from "./components/handleFilterActive";
 
-window.addEventListener("load", function () {
-    load();
-});
-
-(async () => {
+window.addEventListener("load", async function () {
     const db = {
         cart: JSON.parse(localStorage.getItem("cartProducts")) || {},
         products:
@@ -30,6 +26,7 @@ window.addEventListener("load", function () {
     };
 
     fillApp();
+    load();
     handleFilterActive();
     printProducts(db);
     headerScroll();
@@ -52,4 +49,4 @@ window.addEventListener("load", function () {
             duration: 300,
         },
     }).filter("all");
-})();
+});
