@@ -39,5 +39,7 @@ export const buyProducts = (db) => {
             printProductsCart(db);
             printTotal(db);
             printAmountProductsInCart(db);
+
+            window.location.reload();
         });
 };
