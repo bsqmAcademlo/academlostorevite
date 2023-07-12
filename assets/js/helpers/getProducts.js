@@ -1,10 +1,10 @@
+const BASE_URL = "https://services-academlo-shopping.onrender.com/";
+
 export async function getProducts() {
-    const data = await fetch(
-        "https://ecommercebackend.fundamentos-29.repl.co/"
-    );
+	const data = await fetch(BASE_URL);
 
-    const response = await data.json();
+	const response = await data.json();
 
-    localStorage.setItem("productsApi", JSON.stringify(response));
-    return response;
+	localStorage.setItem("productsApi", JSON.stringify(response));
+	return response;
 }

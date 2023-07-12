@@ -1,7 +1,7 @@
 export const fillApp = () => {
-    const app = document.querySelector("#app");
+	const app = document.querySelector("#app");
 
-    let html = `
+	let html = `
     <header id="headerPrincipal">
             <nav class="navbar container">
                 <a href="#home" class="navbar_logo">
@@ -170,8 +170,9 @@ export const fillApp = () => {
             </section>
 
             <p><b>Nombre completo, correo y <a href="#">repositorio</a> de la persona que lo realizo</b></p>
+            <p><a href="https://services-academlo-shopping.onrender.com/" target="_blank">API consumida </a></p>
         </footer>
     `;
 
-    app.innerHTML = html;
+	app.innerHTML = html;
 };
