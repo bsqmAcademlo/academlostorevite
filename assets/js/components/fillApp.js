@@ -49,7 +49,7 @@ export const fillApp = () => {
 
                 <div class="home_body">
                     <h2 class="home_body-title">New Sweatshirt
-                        COLLECTIONS 2022</h2>
+                        COLLECTIONS 2024</h2>
                     <p class="home_body-paragragh">Latest arrival of the new Hanes Midweight Crewneck sweatshirt imported
                         from
                         the 2022 series, with
@@ -170,7 +170,10 @@ export const fillApp = () => {
             </section>
 
             <p><b>Nombre completo, correo y <a href="#">repositorio</a> de la persona que lo realizo</b></p>
-            <p><a href="https://services-academlo-shopping.onrender.com/" target="_blank">API consumida </a></p>
+            <p>
+                Puedes utilizar esta 👉🏽 <a href="https://services-academlo-shopping.onrender.com/" target="_blank">click</a>,
+                o si tienes problemas con esa, utiliza esta 👉🏽 <a href="https://ecommercebackend.fundamentos-29.repl.co" target="_blank">click</a>
+            </p>
         </footer>
     `;
 
